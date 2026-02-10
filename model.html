@@ -1,0 +1,155 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene cursor="rayOrigin: mouse">
+        <a-assets>
+            <!-- Imatges 360 -->
+            <img id="ipresentacio" src="0_general arreglado.jpg">
+            <img id="i00" src="assets/imatges/Pati.jpg">
+            <img id="i01" src="assets/imatges/torreSuperior.jpg">
+            <img id="i02" src="assets/imatges/ermitaAltar.jpg">
+
+            <!--imatge del plano-->
+            <img id="dibuplano" src="assets/imatges/plano.jpg">
+
+            <!--imatges de banderes-->
+            <img id="bes" src="assets/imatges/bes.png">
+            <img id="bcat" src="assets/imatges/bcat.png">
+            <img id="buk" src="assets/imatges/buk.png">
+
+        </a-assets>
+
+        <a-entity camera look-controls wasd-controls="false"></a-entity>
+
+        <!-- Entorn 360 inicial -->
+        <a-sky id="sky" src="#ipresentacio"></a-sky>
+        <!-- Mostra les tres banderes -->
+        <a-plane id="es" position="-1.5 -0.5 -2" src="#bes" rotation="0 0 0" scale="1 1 1" botocastella></a-plane>
+        <a-plane id="cat" position="0 -0.5 -2" src="#bcat" rotation="0 0 0" scale="1 1 1" botocatala></a-plane>
+        <a-plane id="uk" position="1.5 -0.5 -2" src="#buk" rotation="0 0 0" scale="1 1 1" botoangles></a-plane>
+
+        <!-- Deixa el mapa a punt per mostrar a la propera-->
+        <a-plane id="plano" position="0 -1 -2" src="#dibuplano" rotation="0 0 0" scale="2 1 2"
+            visible="false"></a-plane>
+
+        <!-- Punts d'interés a punt de mostrar-->
+
+        <a-sphere id="esfera1" bototorre="" position="-0.7 -0.7 -2" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+        <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+
+
+        <!-- Element de so -->
+        <a-entity id="sound" sound="src: #audio5"></a-entity>
+    </a-scene>
+
+
+    <script>
+        const sky = document.querySelector('#sky');
+        const sound = document.querySelector('#sound');
+        let idioma = "ca"
+        const banderaEs = document.querySelector('#es');
+        const banderaCat = document.querySelector('#cat');
+        const banderaUk = document.querySelector('#uk');
+        const esfera1 = document.querySelector('#esfera1');
+        const esfera2 = document.querySelector('#esfera2');
+        const mapa = document.querySelector('#plano');
+
+        //elimina el moviment de les tecles del cursor
+        document.querySelector("[camera]").removeAttribute("wasd-controls");
+
+        //funció per sonar audio, va a buscar la carpeta de l'idioma
+        function playAudio(nomFitxer) {
+            const ruta = `assets/audios/${idioma}/${nomFitxer}.mp3`;
+            console.log(ruta);
+            if (sound.components.sound && sound.components.sound.isPlaying) {
+                sound.components.sound.stopSound();
+            }
+            sound.setAttribute('sound', `src: ${ruta}`);
+            sound.components.sound.playSound();
+        }
+
+
+        //si prem boto angles, carrega la imatge 00
+        //deixa de mostrar les banderes, mostra el mapa
+        //mostra els punts d'interes i sona la locució inicial en l'idioma que toca
+        AFRAME.registerComponent("botoangles", {
+            init: function () {
+                this.el.addEventListener("click", (e) => {
+                    sky.setAttribute('src', '#i00'); //Mostra la imatge 0  
+                    banderaEs.setAttribute('visible', false);
+                    banderaCat.setAttribute('visible', false);
+                    banderaUk.setAttribute('visible', false);
+                    esfera1.setAttribute('visible', true);
+                    esfera2.setAttribute('visible', true);
+                    mapa.setAttribute('visible', true);
+                    idioma = "uk"
+                    playAudio("Intro");  
+                })
+            }
+        });
+
+        AFRAME.registerComponent("botocatala", {
+            init: function () {
+                this.el.addEventListener("click", (e) => {
+                    sky.setAttribute('src', '#i00'); //Mostra la imatge 0  
+                    banderaEs.setAttribute('visible', false);
+                    banderaCat.setAttribute('visible', false);
+                    banderaUk.setAttribute('visible', false);
+                    esfera1.setAttribute('visible', true);
+                    esfera2.setAttribute('visible', true);
+                    mapa.setAttribute('visible', true);
+                    idioma = "cat"
+                    playAudio("Intro");  
+                })
+            }
+        });
+
+        AFRAME.registerComponent("botocastella", {
+            init: function () {
+                this.el.addEventListener("click", (e) => {
+                    sky.setAttribute('src', '#i00'); //Mostra la imatge 0  
+                    banderaEs.setAttribute('visible', false);
+                    banderaCat.setAttribute('visible', false);
+                    banderaUk.setAttribute('visible', false);
+                    esfera1.setAttribute('visible', true);
+                    esfera2.setAttribute('visible', true);
+                    mapa.setAttribute('visible', true);
+                    idioma = "es"
+                    playAudio("Intro");  
+                })
+            }
+        });
+
+        AFRAME.registerComponent("bototorre", {
+            init: function () {
+                this.el.addEventListener("click", (e) => {
+                    sky.setAttribute('src', '#i01'); //Mostra la imatge de la torre                
+                    if (sound.components.sound.isPlaying) {
+                        sound.components.sound.stopSound(); // Para el so si ja s'està reproduint
+                    }
+                    playAudio("torre");
+                })
+            }
+        });
+        AFRAME.registerComponent("botoermita", {
+            init: function () {
+                this.el.addEventListener("click", (e) => {
+                    sky.setAttribute('src', '#i02'); //Mostra la imatge de la torre                
+                    if (sound.components.sound.isPlaying) {
+                        sound.components.sound.stopSound(); // Para el so si ja s'està reproduint
+                    }
+                    playAudio("ermita");
+                })
+            }
+        });
+
+    </script>
+</body>
+
+</html>
