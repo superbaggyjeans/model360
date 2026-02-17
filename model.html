@@ -9,9 +9,16 @@
         <a-assets>
             <!-- Imatges 360 -->
             <img id="ipresentacio" src="assets/imatges/0_generalarre.jpg">
-            <img id="i00" src="assets/imatges/Pati.jpg">
-            <img id="i01" src="assets/imatges/torreSuperior.jpg">
-            <img id="i02" src="assets/imatges/ermitaAltar.jpg">
+            <img id="i00" src="assets/imatges/0_generalarre color.jpg">
+            <img id="i01" src="assets/imatges/1_1oficines arrre.jpg">
+            <img id="i02" src="assets/imatges/2_1abocador arre.jpg">
+            <img id="i0X" src="">
+            <img id="i0X" src="">
+            <img id="i0X" src="">
+            <img id="i0X" src="">
+            <img id="i0X" src="">
+            <img id="i0X" src="">
+            <img id="i0X" src="">
 
             <!--imatge del plano-->
             <img id="dibuplano" src="assets/imatges/parc_ambiental_mapa.jpg">
@@ -38,10 +45,27 @@
 
         <!-- Punts d'interés a punt de mostrar-->
 
-        <a-sphere id="esfera1" bototorre="" position="-0.7 -0.7 -2" radius="0.03" color="blue" visible="false"
+        <a-sphere id="esfera1" botooficina="" position="-0.7 -0.7 -2" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+        <a-sphere id="esfera2" botoabocador="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+        <a-sphere id="esfera3" botoplanta="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+          <!--<a-sphere id="esfera4" botomotor="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+       
+        <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
             animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
         <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
             animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+        <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+        <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+        <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+        <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere> -->
 
 
         <!-- Element de so -->
@@ -58,6 +82,13 @@
         const banderaUk = document.querySelector('#uk');
         const esfera1 = document.querySelector('#esfera1');
         const esfera2 = document.querySelector('#esfera2');
+        const esfera3 = document.querySelector('#esfera3');
+        // const esfera2 = document.querySelector('#esfera2');
+        // const esfera2 = document.querySelector('#esfera2');
+        // const esfera2 = document.querySelector('#esfera2');
+        // const esfera2 = document.querySelector('#esfera2');
+        // const esfera2 = document.querySelector('#esfera2');
+        // const esfera2 = document.querySelector('#esfera2');
         const mapa = document.querySelector('#plano');
 
         //elimina el moviment de les tecles del cursor
@@ -87,6 +118,13 @@
                     banderaUk.setAttribute('visible', false);
                     esfera1.setAttribute('visible', true);
                     esfera2.setAttribute('visible', true);
+                    esfera3.setAttribute('visible', true);
+                    // esfera2.setAttribute('visible', true);
+                    // esfera2.setAttribute('visible', true);
+                    // esfera2.setAttribute('visible', true);
+                    // esfera2.setAttribute('visible', true);
+                    // esfera2.setAttribute('visible', true);
+                    // esfera2.setAttribute('visible', true);
                     mapa.setAttribute('visible', true);
                     idioma = "uk"
                     playAudio("Intro");  
@@ -103,6 +141,7 @@
                     banderaUk.setAttribute('visible', false);
                     esfera1.setAttribute('visible', true);
                     esfera2.setAttribute('visible', true);
+                    esfera3.setAttribute('visible', true);
                     mapa.setAttribute('visible', true);
                     idioma = "cat"
                     playAudio("Intro");  
@@ -119,6 +158,7 @@
                     banderaUk.setAttribute('visible', false);
                     esfera1.setAttribute('visible', true);
                     esfera2.setAttribute('visible', true);
+                    esfera3.setAttribute('visible', true);
                     mapa.setAttribute('visible', true);
                     idioma = "es"
                     playAudio("Intro");  
@@ -126,7 +166,7 @@
             }
         });
 
-        AFRAME.registerComponent("bototorre", {
+        AFRAME.registerComponent("botooficina", {
             init: function () {
                 this.el.addEventListener("click", (e) => {
                     sky.setAttribute('src', '#i01'); //Mostra la imatge de la torre                
@@ -137,7 +177,7 @@
                 })
             }
         });
-        AFRAME.registerComponent("botoermita", {
+        AFRAME.registerComponent("botoabocador", {
             init: function () {
                 this.el.addEventListener("click", (e) => {
                     sky.setAttribute('src', '#i02'); //Mostra la imatge de la torre                
