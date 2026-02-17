@@ -12,13 +12,13 @@
             <img id="i00" src="assets/imatges/0_generalarre color.jpg">
             <img id="i01" src="assets/imatges/1_1oficines arrre.jpg">
             <img id="i02" src="assets/imatges/2_1abocador arre.jpg">
+            <img id="i03" src="assets/imatges/3_plantatransferencia arre.jpg">
+            <img id="i04" src="assets/imatges/4_motorbiogas arre.jpg">
+            <img id="i05" src="assets/imatges/5_bassesdaigues arres.jpg">
             <img id="i0X" src="">
             <img id="i0X" src="">
             <img id="i0X" src="">
-            <img id="i06" src="assets/imatges/6_parcsolar arre.jpg">
-            <img id="i07" src="assets/imatges/7_1plantacompostatge arre.jpg">
-            <img id="i08" src="assets/imatges/8_novaplanta arree.jpg">
-            <img id="i09" src="assets/imatges/9_falconeria arre.jpg">
+            <img id="i0X" src="">
 
             <!--imatge del plano-->
             <img id="dibuplano" src="assets/imatges/parc_ambiental_mapa.jpg">
@@ -51,9 +51,12 @@
             animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
         <a-sphere id="esfera3" botoplanta="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
             animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
-          <!--<a-sphere id="esfera4" botomotor="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
+        <a-sphere id="esfera4" botomotor="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere> 
+        <a-sphere id="esfera5" botobasses="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
             animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
-       
+
+
         <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
             animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
         <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
@@ -63,9 +66,7 @@
         <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
             animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
         <a-sphere id="esfera2" botoermita="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
-            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
-        <a-sphere id="esfera9" botofalco="" position="0.224 -1.2 -1.793" radius="0.03" color="blue" visible="false"
-            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere> -->
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere> 
 
 
         <!-- Element de so -->
@@ -83,8 +84,8 @@
         const esfera1 = document.querySelector('#esfera1');
         const esfera2 = document.querySelector('#esfera2');
         const esfera3 = document.querySelector('#esfera3');
-        // const esfera2 = document.querySelector('#esfera2');
-        // const esfera2 = document.querySelector('#esfera2');
+        const esfera4 = document.querySelector('#esfera4');
+        const esfera5 = document.querySelector('#esfera5');
         // const esfera2 = document.querySelector('#esfera2');
         // const esfera2 = document.querySelector('#esfera2');
         // const esfera2 = document.querySelector('#esfera2');
@@ -119,8 +120,8 @@
                     esfera1.setAttribute('visible', true);
                     esfera2.setAttribute('visible', true);
                     esfera3.setAttribute('visible', true);
-                    // esfera2.setAttribute('visible', true);
-                    // esfera2.setAttribute('visible', true);
+                    esfera4.setAttribute('visible', true);
+                    esfera5.setAttribute('visible', true);
                     // esfera2.setAttribute('visible', true);
                     // esfera2.setAttribute('visible', true);
                     // esfera2.setAttribute('visible', true);
@@ -181,6 +182,42 @@
             init: function () {
                 this.el.addEventListener("click", (e) => {
                     sky.setAttribute('src', '#i02'); //Mostra la imatge de la torre                
+                    if (sound.components.sound.isPlaying) {
+                        sound.components.sound.stopSound(); // Para el so si ja s'està reproduint
+                    }
+                    playAudio("ermita");
+                })
+            }
+        });
+
+         AFRAME.registerComponent("botoplanta", {
+            init: function () {
+                this.el.addEventListener("click", (e) => {
+                    sky.setAttribute('src', '#i03'); //Mostra la imatge de la torre                
+                    if (sound.components.sound.isPlaying) {
+                        sound.components.sound.stopSound(); // Para el so si ja s'està reproduint
+                    }
+                    playAudio("ermita");
+                })
+            }
+        });
+
+         AFRAME.registerComponent("botomotor", {
+            init: function () {
+                this.el.addEventListener("click", (e) => {
+                    sky.setAttribute('src', '#i04'); //Mostra la imatge de la torre                
+                    if (sound.components.sound.isPlaying) {
+                        sound.components.sound.stopSound(); // Para el so si ja s'està reproduint
+                    }
+                    playAudio("ermita");
+                })
+            }
+        });
+
+        AFRAME.registerComponent("botobasses", {
+            init: function () {
+                this.el.addEventListener("click", (e) => {
+                    sky.setAttribute('src', '#i05'); //Mostra la imatge de la torre                
                     if (sound.components.sound.isPlaying) {
                         sound.components.sound.stopSound(); // Para el so si ja s'està reproduint
                     }
