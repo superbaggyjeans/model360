@@ -19,6 +19,9 @@
             <img id="i07" src="assets/imatges/7_1plantacompostatge arre.jpg">
             <img id="i08" src="assets/imatges/8_novaplanta arree.jpg">
             <img id="i09" src="assets/imatges/9_falconeria arre.jpg">
+            <img id="i10" src="assets/imatges/0_general arreglado.jpg">
+
+
 
             <!--imatge del plano-->
             <img id="dibuplano" src="assets/imatges/parc_ambiental_mapa.jpg">
@@ -71,6 +74,9 @@
 
         <a-sphere id="esfera9" botofalco="" position="0.180 -0.70 -2" radius="0.03" color="blue" visible="false"
             animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
+        
+        <a-sphere id="esfera10" bototornar="" position="0.700 -0.70 -2" radius="0.03" color="red" visible="false"
+            animation="property: scale; dur: 1000;  to: 1.2 1.2 1.2; dir: alternate;  loop: true"></a-sphere>
 
 
         <!-- Element de so -->
@@ -94,6 +100,8 @@
         const esfera7 = document.querySelector('#esfera7');
         const esfera8 = document.querySelector('#esfera8');
         const esfera9 = document.querySelector('#esfera9');
+        const esfera10 = document.querySelector('#esfera10');
+
         const mapa = document.querySelector('#plano');
 
         //elimina el moviment de les tecles del cursor
@@ -130,6 +138,8 @@
                     esfera7.setAttribute('visible', true);
                     esfera8.setAttribute('visible', true);
                     esfera9.setAttribute('visible', true);
+                    esfera10.setAttribute('visible', true);
+
                     mapa.setAttribute('visible', true);
                     idioma = "uk"
                     playAudio("Oficinas");  
@@ -153,6 +163,8 @@
                     esfera7.setAttribute('visible', true);
                     esfera8.setAttribute('visible', true);
                     esfera9.setAttribute('visible', true);
+                    esfera10.setAttribute('visible', true);
+
 
 
                     mapa.setAttribute('visible', true);
@@ -178,6 +190,8 @@
                     esfera7.setAttribute('visible', true);
                     esfera8.setAttribute('visible', true);
                     esfera9.setAttribute('visible', true);
+                    esfera10.setAttribute('visible', true);
+
 
                     mapa.setAttribute('visible', true);
                     idioma = "es"
@@ -292,6 +306,44 @@
                 })
             }
         });
+
+
+       AFRAME.registerComponent("bototornar", {
+    init: function () {
+        this.el.addEventListener("click", (e) => {
+
+            // Volver a la imagen inicial
+            sky.setAttribute('src', '#ipresentacio');
+
+            // Parar audio si está sonando
+            if (sound.components.sound && sound.components.sound.isPlaying) {
+                sound.components.sound.stopSound();
+            }
+
+            // Mostrar banderas
+            banderaEs.setAttribute('visible', true);
+            banderaCat.setAttribute('visible', true);
+            banderaUk.setAttribute('visible', true);
+
+            // Ocultar mapa
+            mapa.setAttribute('visible', false);
+
+            // Ocultar todas las esferas
+            esfera1.setAttribute('visible', false);
+            esfera2.setAttribute('visible', false);
+            esfera3.setAttribute('visible', false);
+            esfera4.setAttribute('visible', false);
+            esfera5.setAttribute('visible', false);
+            esfera6.setAttribute('visible', false);
+            esfera7.setAttribute('visible', false);
+            esfera8.setAttribute('visible', false);
+            esfera9.setAttribute('visible', false);
+            esfera10.setAttribute('visible', false);
+
+        
+        })
+    }
+});
 
     </script>
 </body>
